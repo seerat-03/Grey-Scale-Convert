@@ -1,48 +1,32 @@
-# 🖼 Mini Project-23: Resize 100 Images to 50% Using OpenCV
+# 🖼 Mini Project-23:# 🖤🖼 Convert 100 Images to Grayscale using OpenCV
 
-This project uses Python and OpenCV to resize a batch of 100 images to *50% of their original size*. It’s a beginner-friendly image processing task useful for dataset optimization, web use, or mobile app compatibility.
+This project converts a batch of 100 color images into *grayscale (black & white)* using Python and OpenCV. It's ideal for preprocessing images for ML projects, reducing storage size, or applying artistic effects.
 
 ---
 
 ## 🚀 Features
 
-- 🔹 Resize all images in bulk
-- 🔹 Supports .jpg, .png, .jpeg, .bmp
-- 🔹 Saves all resized images in a zip file for easy download
-- 🔹 Runs perfectly on Google Colab or locally
+✅ Batch processing of 100 images  
+✅ Converts to grayscale using OpenCV's cv2.COLOR_BGR2GRAY  
+✅ Supports common image formats: .jpg, .png, .jpeg, .bmp  
+✅ Output saved in a separate folder  
+✅ Runs smoothly on *Google Colab* or local Python
 
 ---
 
-## 📁 How to Use
+## 🧰 Tech Stack
 
-### 🧩 Step-by-Step on Google Colab
+- 🐍 Python 3  
+- 📦 OpenCV (cv2)  
+- 💻 Google Colab / Jupyter Notebook / Local IDE
 
-1. Upload a ZIP file containing 100 images.
-2. Extract the ZIP using Python.
-3. Use OpenCV to resize each image to 50%.
-4. Save the output to a new folder.
-5. Zip the folder and download the result.
+---
 
-```python
-import cv2, os, zipfile
-from google.colab import files
+## 📁 Folder Structure
 
-# Upload ZIP
-uploaded = files.upload()
-
-# Extract
-with zipfile.ZipFile("images.zip", "r") as zip_ref:
-    zip_ref.extractall("original_images")
-
-# Resize and Save
-os.makedirs("resized_images", exist_ok=True)
-for img in os.listdir("original_images"):
-    if img.lower().endswith((".jpg", ".png", ".jpeg")):
-        path = f"original_images/{img}"
-        image = cv2.imread(path)
-        resized = cv2.resize(image, (0, 0), fx=0.5, fy=0.5)
-        cv2.imwrite(f"resized_images/{img}", resized)
-
-# Zip and Download
-shutil.make_archive("resized_images", "zip", "resized_images")
-files.download("resized_images.zip")
+```bash
+convert-to-grayscale/
+├── original_images/        # Input images (uploaded ZIP)
+├── grayscale_images/       # Output folder for grayscale images
+├── grayscale_converter.ipynb  # Main Colab-compatible notebook
+└── README.md
